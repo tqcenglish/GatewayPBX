@@ -1,4 +1,5 @@
-baseURL = 'https://tqcenglish.github.io'
+baseURL = 'https://tqcenglish.github.io/GatewayPBX/'
 languageCode = 'zh-cn'
+defaultContentLanguage = "zh-cn"
 title = '网关与PBX使用例子'
 theme = 'ananke'
