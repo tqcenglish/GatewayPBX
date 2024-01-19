@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>FXS 与 xswitch | 网关与PBX使用例子</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="XSwitch XSwitch 是一个基于 FreeSwitch 的 PBX. 基于 docker 云部署的方式进行测试. 在此测试 G 系列 FXS网关与 FreeSwitch 的兼容性.
+创建分机 成功安装 PBX 环境后第一步在 PBX 创建分机(具体查看 Xswitch 使用手册), 如下图. 不要混淆名称和号码, 这里我们使用分机 1019, 1020.
+网关注册 配置 VOIPServer FXS 网关完成基本的网络/时间配置后, 第一步就是创建编辑对应的 PBX 服务器信息. 如下图. 通常端口为 5060, 具体以 PBX 端开放监听的地址/端口为准.
+端口配置分机 FXS 需要为每个端口配置分机, 然后在端口上连接电话线到模拟话机即可. 若注册成功将看到如下显示. 在状态页面也可以查看注册状态. 拨打测试 模拟话机 1019 拨打 1020, 在状态页面能看见通话中的标识. 能正常的呼入/呼入,即与 XSwitch 联合使用配置成功完成.">
+    <meta name="generator" content="Hugo 0.121.2">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+
+    
+<link rel="stylesheet" href="/GatewayPBX/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://tqcenglish.github.io/GatewayPBX/zh-cn/xswitch/fxs/">
+    
+
+    <meta property="og:title" content="FXS 与 xswitch" />
+<meta property="og:description" content="XSwitch XSwitch 是一个基于 FreeSwitch 的 PBX. 基于 docker 云部署的方式进行测试. 在此测试 G 系列 FXS网关与 FreeSwitch 的兼容性.
+创建分机 成功安装 PBX 环境后第一步在 PBX 创建分机(具体查看 Xswitch 使用手册), 如下图. 不要混淆名称和号码, 这里我们使用分机 1019, 1020.
+网关注册 配置 VOIPServer FXS 网关完成基本的网络/时间配置后, 第一步就是创建编辑对应的 PBX 服务器信息. 如下图. 通常端口为 5060, 具体以 PBX 端开放监听的地址/端口为准.
+端口配置分机 FXS 需要为每个端口配置分机, 然后在端口上连接电话线到模拟话机即可. 若注册成功将看到如下显示. 在状态页面也可以查看注册状态. 拨打测试 模拟话机 1019 拨打 1020, 在状态页面能看见通话中的标识. 能正常的呼入/呼入,即与 XSwitch 联合使用配置成功完成." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://tqcenglish.github.io/GatewayPBX/zh-cn/xswitch/fxs/" /><meta property="article:section" content="zh-cn" />
+<meta property="article:published_time" content="2024-01-18T16:01:40+08:00" />
+<meta property="article:modified_time" content="2024-01-18T16:01:40+08:00" />
+
+<meta itemprop="name" content="FXS 与 xswitch">
+<meta itemprop="description" content="XSwitch XSwitch 是一个基于 FreeSwitch 的 PBX. 基于 docker 云部署的方式进行测试. 在此测试 G 系列 FXS网关与 FreeSwitch 的兼容性.
+创建分机 成功安装 PBX 环境后第一步在 PBX 创建分机(具体查看 Xswitch 使用手册), 如下图. 不要混淆名称和号码, 这里我们使用分机 1019, 1020.
+网关注册 配置 VOIPServer FXS 网关完成基本的网络/时间配置后, 第一步就是创建编辑对应的 PBX 服务器信息. 如下图. 通常端口为 5060, 具体以 PBX 端开放监听的地址/端口为准.
+端口配置分机 FXS 需要为每个端口配置分机, 然后在端口上连接电话线到模拟话机即可. 若注册成功将看到如下显示. 在状态页面也可以查看注册状态. 拨打测试 模拟话机 1019 拨打 1020, 在状态页面能看见通话中的标识. 能正常的呼入/呼入,即与 XSwitch 联合使用配置成功完成."><meta itemprop="datePublished" content="2024-01-18T16:01:40+08:00" />
+<meta itemprop="dateModified" content="2024-01-18T16:01:40+08:00" />
+<meta itemprop="wordCount" content="57">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="FXS 与 xswitch"/>
+<meta name="twitter:description" content="XSwitch XSwitch 是一个基于 FreeSwitch 的 PBX. 基于 docker 云部署的方式进行测试. 在此测试 G 系列 FXS网关与 FreeSwitch 的兼容性.
+创建分机 成功安装 PBX 环境后第一步在 PBX 创建分机(具体查看 Xswitch 使用手册), 如下图. 不要混淆名称和号码, 这里我们使用分机 1019, 1020.
+网关注册 配置 VOIPServer FXS 网关完成基本的网络/时间配置后, 第一步就是创建编辑对应的 PBX 服务器信息. 如下图. 通常端口为 5060, 具体以 PBX 端开放监听的地址/端口为准.
+端口配置分机 FXS 需要为每个端口配置分机, 然后在端口上连接电话线到模拟话机即可. 若注册成功将看到如下显示. 在状态页面也可以查看注册状态. 拨打测试 模拟话机 1019 拨打 1020, 在状态页面能看见通话中的标识. 能正常的呼入/呼入,即与 XSwitch 联合使用配置成功完成."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/GatewayPBX/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        网关与PBX使用例子
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Zh-Cns
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">FXS 与 xswitch</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-01-18T16:01:40+08:00">January 18, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="xswitch">XSwitch</h2>
+<p><a href="https://xswitch.cn/">XSwitch</a> 是一个基于 FreeSwitch 的 PBX. 基于 docker 云部署的方式进行测试.
+在此测试 G 系列 FXS网关与 FreeSwitch 的兼容性.</p>
+<h2 id="创建分机">创建分机</h2>
+<p>成功安装 PBX 环境后第一步在 PBX 创建分机(具体查看 Xswitch 使用手册), 如下图.
+<img src="/GatewayPBX/img/xswitch/extension.png" alt="">
+<strong>不要混淆名称和号码</strong>, 这里我们使用分机 1019, 1020.</p>
+<h2 id="网关注册">网关注册</h2>
+<h3 id="配置-voipserver">配置 VOIPServer</h3>
+<p>FXS 网关完成基本的网络/时间配置后, 第一步就是创建编辑对应的 PBX 服务器信息. 如下图.
+<img src="/GatewayPBX/img/xswitch/gateway_voipserver.png" alt="">
+通常端口为 5060, 具体以 PBX 端开放监听的地址/端口为准.</p>
+<h3 id="端口配置分机">端口配置分机</h3>
+<p>FXS 需要为每个端口配置分机, 然后在端口上连接电话线到模拟话机即可.
+若注册成功将看到如下显示.
+<img src="/GatewayPBX/img/xswitch/gateway_fxs-port.png" alt="">
+在状态页面也可以查看注册状态.
+<img src="/GatewayPBX/img/xswitch/gateway_dashboard_port.png" alt=""></p>
+<h2 id="拨打测试">拨打测试</h2>
+<p>模拟话机 1019 拨打 1020, 在状态页面能看见通话中的标识.
+<img src="/GatewayPBX/img/xswitch/gateway_dashboard_call.png" alt=""></p>
+<p>能正常的呼入/呼入,即与 XSwitch 联合使用配置成功完成.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://tqcenglish.github.io/GatewayPBX/" >
+    &copy;  网关与PBX使用例子 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
