@@ -1,7 +1,6 @@
 +++
 title = 'FXS 与 xswitch'
 date = 2024-01-18T16:01:40+08:00
-draft = true
 +++
 
 ## xswitch
