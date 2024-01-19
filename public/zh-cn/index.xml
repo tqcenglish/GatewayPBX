@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>网关与PBX使用例子</title>
-    <link>https://tqcenglish.github.io/GatewayPBX/</link>
-    <description>Recent content on 网关与PBX使用例子</description>
+    <title>Zh-Cns on 网关与PBX使用例子</title>
+    <link>https://tqcenglish.github.io/GatewayPBX/zh-cn/</link>
+    <description>Recent content in Zh-Cns on 网关与PBX使用例子</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 18 Jan 2024 16:01:40 +0800</lastBuildDate>
-    <atom:link href="https://tqcenglish.github.io/GatewayPBX/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tqcenglish.github.io/GatewayPBX/zh-cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FXS 与 xswitch</title>
       <link>https://tqcenglish.github.io/GatewayPBX/zh-cn/xswitch/gateway/</link>
