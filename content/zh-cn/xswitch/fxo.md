@@ -1,0 +1,36 @@
++++
+title = 'FXO 与 xswitch'
+date = 2024-01-21T15:01:40+08:00
++++
+
+## XSwitch
+[XSwitch](https://xswitch.cn/) 是一个基于 FreeSwitch 的 PBX. 基于 docker 云部署的方式进行测试.
+在此测试 G 系列 FXO 网关与 FreeSwitch 的兼容性.
+
+将 FXO 的电话线接口接入运营商提供的电话线上. 然后在 FXO 的新建中继(Xswitch 的分机号作为客户端注册信息)注册.
+
+## 创建分机
+成功安装 PBX 环境后第一步在 PBX 创建分机(具体查看 Xswitch 使用手册), 如下图.
+![](/GatewayPBX/img/xswitch/extension.png)
+**不要混淆名称和号码**, 这里我们使用分机 1022_fxo.
+![](/GatewayPBX/img/xswitch/1022_fxo.png)
+
+## 网关注册
+### 创建中继账号(分机号)
+FXO 网关完成基本的网络/时间配置后, 根据分机号创建中继信息. 如下图.
+![](/GatewayPBX/img/xswitch/1022_gateway.png)
+通常端口为 5060, 具体以 PBX 端开放监听的地址/端口为准.
+可以在 Xswitch 和 FXO 两端查看到注册成功的信息.
+![](/GatewayPBX/img/xswitch/1022_fxo_reg_ok.png)
+![](/GatewayPBX/img/xswitch/gateway_1022_fxo_reg_ok.png)
+
+### 端口配置中继和代拨号码
+FXO 需要为每个端口配置中继, 当 FXO 线路电话呼入时,通过中继呼出. 当中继呼入时通过 FXO 线路呼出.
+如下图选择中继并编辑代拨号码(即线路呼入时将拨打中继线路上的代拨号码).
+![](/GatewayPBX/img/xswitch/gateway_1022_edit.png)
+![](/GatewayPBX/img/xswitch/gateway_1022_call_number.png)
+
+## 拨打测试
+![](/GatewayPBX/img/xswitch/gateway_1022_call_status.png)
+
+能正常的呼入/呼入,即与 XSwitch 联合使用配置成功完成.
